@@ -4,7 +4,10 @@ from Package.CMakePackageBase import *
 
 class subinfo(info.infoclass):
     def setTargets(self):
-        self.targets['2.1.0'] = "https://download.kde.org/stable/maui/mauikit-filebrowsing/2.1.0/mauikit-filebrowsing-2.1.0.tar.xz"
+        for ver in ['2.1.0']:
+            self.targets[ver] = 'https://download.kde.org/stable/maui/mauikit-filebrowsing/%s/mauikit-filebrowsing-%s.tar.xz' % (ver, ver)
+            self.archiveNames[ver] = 'mauikit-filebrowsing-%s.tar.gz' % ver
+            self.targetInstSrc[ver] = 'mauikit-filebrowsing-%s' % ver
 
         self.description = "mauikit file browsing"
         self.defaultTarget = '2.1.0'

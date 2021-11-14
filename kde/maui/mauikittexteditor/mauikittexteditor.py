@@ -4,7 +4,10 @@ from Package.CMakePackageBase import *
 
 class subinfo(info.infoclass):
     def setTargets(self):
-        self.targets['2.1.0'] = "https://download.kde.org/stable/maui/mauikit-texteditor/2.1.0/mauikit-texteditor-2.1.0.tar.xz"
+        for ver in ['2.1.0']:
+            self.targets[ver] = 'https://download.kde.org/stable/maui/mauikit-texteditor/%s/mauikit-texteditor-%s.tar.xz' % (ver, ver)
+            self.archiveNames[ver] = 'mauikit-texteditor-%s.tar.gz' % ver
+            self.targetInstSrc[ver] = 'mauikit-texteditor-%s' % ver
 
         self.description = "mauikit text editor"
         self.defaultTarget = '2.1.0'

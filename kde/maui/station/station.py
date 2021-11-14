@@ -6,7 +6,10 @@ from Package.CMakePackageBase import *
 
 class subinfo(info.infoclass):
     def setTargets(self):
-        self.targets['2.1.0'] = "https://download.kde.org/stable/maui/station/2.1.0/station-2.1.0.tar.xz"
+        for ver in ['2.1.0']:
+            self.targets[ver] = 'https://download.kde.org/stable/maui/station/%s/station-%s.tar.xz' % (ver, ver)
+            self.archiveNames[ver] = 'station-%s.tar.gz' % ver
+            self.targetInstSrc[ver] = 'station-%s' % ver
 
         self.description = "mauikit Station terminal"
         self.defaultTarget = '2.1.0'
